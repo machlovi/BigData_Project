@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+#!/usr/bin/python3
+
 import sys
 import re
 rule = re.compile('[A-Za-z]')
