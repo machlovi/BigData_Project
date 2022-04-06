@@ -10,7 +10,7 @@ new_zones=""
 
 # ../../start.sh
 
-for i in {0..5}; do
+for i in {0..50}; do
     if [[ $zones == $new_zones ]]; then
         break
     elif [[ $new_zones != "" ]]; then
