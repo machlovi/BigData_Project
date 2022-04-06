@@ -3,7 +3,7 @@
 /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/input/
 /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/output/
 /usr/local/hadoop/bin/hdfs dfs -mkdir -p /Part2/input/
-/usr/local/hadoop/bin/hdfs dfs -copyFromLocal ../../test-data/example.csv /Part2/input/
+/usr/local/hadoop/bin/hdfs dfs -copyFromLocal ../../test-data/PVI2022.csv /Part2/input/
 /usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar \
 -file ../../part1/Part2/mapper.py -mapper ../../part1/Part2/mapper.py \
 -file ../../part1/Part2/reducer.py -reducer ../../part1/Part2/reducer.py \
