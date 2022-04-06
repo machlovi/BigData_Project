@@ -13,7 +13,7 @@ for entry in sys.stdin:
 
     if player not in reducer_3_output:
         reducer_3_output[player] = [cluster, hit_rate]
-    elif hit_rate > reducer_3_output[player][1]:
+    elif hit_rate > float(reducer_3_output[player][1]):
         reducer_3_output[player] = [cluster, hit_rate]
     else:
         continue
