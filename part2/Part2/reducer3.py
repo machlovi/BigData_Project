@@ -20,3 +20,4 @@ for entry in sys.stdin:
 
 for key, value in reducer_3_output.items():
     print(key+'\t'+'Cluster: '+str(value[0])+' | Hit Rate: '+str(value[1]))
+    
