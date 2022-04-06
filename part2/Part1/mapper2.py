@@ -3,10 +3,6 @@
 #!/usr/bin/python3
 
 import sys
-
-mapper1_output=[]
-
-mapper_2_output = []
 for line in sys.stdin:
   players_pairs, result_shots = line.split('\t')
   attacker, defender = players_pairs.strip().split(',')
@@ -19,7 +15,4 @@ for line in sys.stdin:
       result_shots = result_shots[0]/result_shots[1]
   except:
     pass
-  mapper_2_output.append(attacker+'\t'+defender+','+str(result_shots))
-
-for l in mapper_2_output:
-  print(l)
+  print(attacker+'\t'+defender+','+str(result_shots))
