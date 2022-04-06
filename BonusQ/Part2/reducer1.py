@@ -1,13 +1,23 @@
+#!/usr/bin/env python
+# coding: utf-8
+#!/usr/bin/python3
+
 import sys
-dict_parking_violations = {}
+
+reducer_1_output = {}
 
 for line in sys.stdin:
-    line = line.strip().split('\t')
-    key, value = line[0], line[1]
-    try:
-        value = int(value)
-        dict_parking_violations[key] = [dict_parking_violations.get(key, [0,0])[0] + value, dict_parking_violations.get(key, [0,0])[1]+1]
-    except ValueError:
-        pass
-for key, value in dict_parking_violations.items():
-    print(key+'\t'+str(value))
+    key, values = line.split('\t')
+    values = eval(values)
+    count = values[0]
+    sum_street_code_1 = values[1][0]
+    sum_street_code_2 = values[1][1]
+    sum_street_code_3 = values[1][2]
+    reducer_1_output[int(key)] = [sum_street_code_1/count, sum_street_code_2/count, sum_street_code_3/count]
+
+output = ''
+for key, values in reducer_1_output.items():
+  for value in values:
+    output = output + '_' +str(value)
+output = 'ClusterZ' + output[1:]
+print(output)
