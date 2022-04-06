@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# coding: utf-8
+#!/usr/bin/python3
+
+
 import sys
 import re
 black_color = re.compile('[a-zA-Z]*[B|b][a-zA-Z]*[c|k]')
@@ -14,13 +19,13 @@ for line in sys.stdin:
     if color_val and line_len == 43 and (street_code_1 in street_codes or street_code_2 in street_codes or street_code_3 in street_codes):
         violation_description = re.sub('\W+','',line[39]).lower()
         parking = parking_tickets.search(violation_description)
-        parking_infraction = 1 if parking else 0
+        parking_infraction = '1' if parking else '0'
         if street_code_1 in street_codes:
             street_code = street_code_1
         elif street_code_2 in street_codes:
             street_code = street_code_2
         else:
             street_code = street_code_3
-        print('{}\t{}'.format(street_code, parking_infraction))
+        print('%s\t%s' % (street_code, parking_infraction))
     else:
         continue
