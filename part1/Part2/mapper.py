@@ -4,17 +4,16 @@
 
 import sys
 import re
-rule = re.compile('[A-Z]\s[^\s]{3}')
+rule = re.compile('[^\s]{4}[A|P]')
 
 for line in sys.stdin:
-    line=line.strip(',')
-
-    car_type= line.split(",")[7]
-    year= line.split(",")[36]
-    car_descrp=car_type+' '+year
-    match = rule.search(car_descrp)
+  line=line.strip(',').split(',')
+  line_len = len(line)
+  if line_len ==43:
+    vtime = line[19]
+    match = rule.search(vtime)
     if match:
-      print('%s\t%s' % (car_descrp, '1'))
-
-  
-    
+      vtime=vtime[:2]+vtime[-1:]# Only printing the Violation time
+      print('%s\t%s' % (vtime, '1'))
+  else:
+      continue
