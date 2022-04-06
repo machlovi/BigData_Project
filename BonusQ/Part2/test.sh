@@ -16,26 +16,26 @@ for i in {0..10}; do
     new_zones=`cat /BigData_Project/test-data\/PVI2022.csv | python3 mapper1.py "$zones" | python3 reducer1.py`
 done
 
-echo $zones # delete this
+# echo $zones # delete this
 
-# ../../start.sh
+../../start.sh
 
-# /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/input/
-# /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/output/
-# /usr/local/hadoop/bin/hdfs dfs -mkdir -p /Part2/input/
-# /usr/local/hadoop/bin/hdfs dfs -copyFromLocal ../../test-data/PVI2022.csv /Part2/input/
-# /usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar \
-# -file ../../BonusQ/Part2/mapper2.py -mapper "../../BonusQ/Part2/mapper2.py $zones" \
-# -file ../../BonusQ/Part2/reducer2.py -reducer ../../BonusQ/Part2/reducer2.py \
-# -input /Part2/input/* -output /Part2/output/
+/usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/input/
+/usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/output/
+/usr/local/hadoop/bin/hdfs dfs -mkdir -p /Part2/input/
+/usr/local/hadoop/bin/hdfs dfs -copyFromLocal ../../test-data/PVI2022.csv /Part2/input/
+/usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar \
+-file ../../BonusQ/Part2/mapper2.py -mapper "../../BonusQ/Part2/mapper2.py $zones" \
+-file ../../BonusQ/Part2/reducer2.py -reducer ../../BonusQ/Part2/reducer2.py \
+-input /Part2/input/* -output /Part2/output/
 
-# /usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar \
-# -file ../../BonusQ/Part2/mapper3.py -mapper ../../BonusQ/Part2/mapper3.py \
-# -file ../../BonusQ/Part2/reducer3.py -reducer ../../BonusQ/Part2/reducer3.py \
-# -input /Part2/output/* -output /Part2-2/output/
+/usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar \
+-file ../../BonusQ/Part2/mapper3.py -mapper ../../BonusQ/Part2/mapper3.py \
+-file ../../BonusQ/Part2/reducer3.py -reducer ../../BonusQ/Part2/reducer3.py \
+-input /Part2/output/* -output /Part2-2/output/
 
-# /usr/local/hadoop/bin/hdfs dfs -cat /Part2-2/output/part-00000
-# /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/input/
-# /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/output/
-# /usr/local/hadoop/bin/hdfs dfs -rm -r /Part2-2/output/
-# ../../stop.sh
+/usr/local/hadoop/bin/hdfs dfs -cat /Part2-2/output/part-00000
+/usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/input/
+/usr/local/hadoop/bin/hdfs dfs -rm -r /Part2/output/
+/usr/local/hadoop/bin/hdfs dfs -rm -r /Part2-2/output/
+../../stop.sh

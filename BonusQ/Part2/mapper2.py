@@ -38,8 +38,8 @@ for line in sys.stdin:
             street_code_1 = float(street_code_1.strip())
             street_code_2 = float(street_code_2.strip())
             street_code_3 = float(street_code_3.strip())
-            
-            if violation_time == time_rule and precint == Manhattan_precint and street_name >= southest_street and street_name <= northest_street: 
+
+            if violation_time == time_rule and precint == Manhattan_precint and street_name >= southest_street and street_name <= northest_street:
                 # Regarding condition above: removing streets not in 0.5 miles Radius using streets from W 51 up to W 71, Precint 20
                 # and taking observations at 10:00 am.
                 data = [street_code_1, street_code_2, street_code_3]
@@ -53,7 +53,7 @@ for line in sys.stdin:
                 data_cluster_key = min(data_centroids_distances, key = data_centroids_distances.get) #argmin
                 violation_description = re.sub('\W+','',line[39]).lower()
                 parking = parking_tickets.search(violation_description)
-                parking_infraction = 1 if parking else 0
+                parking_infraction = '1' if parking else '0'
 
                 print('{}\t{}'.format(data_cluster_key, parking_infraction))
 
